@@ -1,0 +1,61 @@
+<!-- ejecutame con: -->
+<!--
+    mvn openapi-generator:generate -f server-generator.xml
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>Correos-Chile</groupId>
+    <artifactId>Correos-Chile</artifactId>
+    <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                	<inputSpec>specification.yaml</inputSpec>
+                    <generatorName>spring</generatorName>
+                    <output>${project.basedir}</output>
+                    <generateApis>true</generateApis>
+                    <generateApiTests>true</generateApiTests>
+                    <configOptions>
+                        <basePackage>cl.group.dispacher.main</basePackage>
+                        <modelPackage>cl.group.dispacher.viewmodel</modelPackage>
+                        <apiPackage>cl.group.dispacher.controller</apiPackage>
+                        <configPackage>cl.group.dispacher.configuration</configPackage>
+                        <groupId>cl.group</groupId>
+                        <artifactId>dispacher</artifactId>
+                        <artifactVersion>1.0.0</artifactVersion>
+                        <skipDefaultInterface>true</skipDefaultInterface>
+                        <useTags>true</useTags>
+                        <useBeanValidation>true</useBeanValidation>
+                        <performBeanValidation>true</performBeanValidation>
+                        <java8>true</java8>
+                        <dateLibrary>java8</dateLibrary>
+                        <developerName>David Hernandez</developerName>
+                        <developerEmail>dhernandez@bmsoluciones.cl</developerEmail>
+                        <library>spring-boot</library>
+                        <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                    </configOptions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.3</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>

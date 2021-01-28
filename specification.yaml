@@ -1,0 +1,75 @@
+openapi: 3.0.1
+info:
+  title: micro send likeage2
+  version: "1.0"
+  description: ultimas simulaciones
+servers:
+- url: http://localhost:8080/dispacher
+paths:
+  /ultimasimulacion:
+    post:
+      requestBody:
+        description:  realiza un llamado a un sp
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+      tags:
+      - ultimas simulaciones
+      summary: Obtiene las ultimas simulaciones
+      description: realiza un llamado a un sp
+      operationId: postUltimasimulacion
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        400:
+          description: Peticion malformada/malhecha
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorGenerico'
+        404:
+          description: No encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorGenerico'
+        500:
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorGenerico'
+components:
+  schemas:
+    Request:
+      type: object
+      properties:
+        usuario:
+          type: string
+          example: '?'
+        contrasena:
+          type: string
+          example: '?'
+    Response:
+      type: object
+      properties:
+        codigo:
+          type: number
+          example: 0
+        mensaje:
+          type: string
+          example: EXITO
+    ErrorGenerico:
+      type: object
+      properties:
+        codigoMensaje:
+          type: string
+        mensaje:
+          type: string
+      description: error generico para casos borde
